@@ -13,10 +13,10 @@ import (
 type HTTP struct {
 	config    *Config
 	server    *http.Server
-	endpoints *endpoints.Endpoint
+	endpoints *endpoints.Endpoints
 }
 
-func NewHTTP(httpConfig *Config, endpoints *endpoints.Endpoint) transport.Server {
+func NewHTTP(httpConfig *Config, endpoints *endpoints.Endpoints) transport.Server {
 	return &HTTP{
 		config:    httpConfig,
 		endpoints: endpoints,

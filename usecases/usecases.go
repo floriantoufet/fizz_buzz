@@ -3,26 +3,50 @@ package usecases
 import (
 	"errors"
 
+	"go.uber.org/zap"
+
 	"fizzbuzz/domains"
+	fizzBuzzModule "fizzbuzz/modules/fizzbuzz"
+	statsModule "fizzbuzz/modules/stats"
 )
 
 var (
-	ErrInvalidLimit  = errors.New("invalid limit")
+	// ErrInvalidLimit is thrown when limit is negative
+	ErrInvalidLimit = errors.New("invalid limit")
+
+	// ErrInvalidModulo is thrown when one of modulus is negative
 	ErrInvalidModulo = errors.New("invalid modulo")
-	ErrUnexpected    = errors.New("unexpected error")
+
+	// ErrUnexpected is thrown when something unexpected happened
+	ErrUnexpected = errors.New("unexpected error")
 )
 
 type Usecases interface {
-	// Ping will be used for technical purpose
-	Ping() string
-
 	// FizzBuzz returns a list of strings with numbers from 1 to limit,
-	// where: all multiples of parameters.FizzModulo are replaced by parameters.FizzString,
-	// all multiples of parameters.BuzzModulo are replaced by parameters.BuzzString,
-	// all multiples of parameters.FizzModulo and parameters.BuzzModulo are replaced by parameters.String1parameters.BuzzString
-	FizzBuzz(parameters domains.FizzBuzz) (string, error)
+	// where: all multiples of request.FizzModulo are replaced by request.FizzString,
+	// all multiples of request.BuzzModulo are replaced by request.BuzzString,
+	// all multiples of request.FizzModulo and request.BuzzModulo are replaced by request.String1request.BuzzString
+	// returns ErrInvalidLimit if limit is negative
+	// returns ErrInvalidModulo if one of modulus is negative
+	FizzBuzz(request domains.FizzBuzz) (string, error)
 
 	// RetrieveStats returns the FizzBuzz corresponding to the most used request,
 	// as well as the number of hits for this request
-	RetrieveStats() (domains.FizzBuzz, int8)
+	RetrieveStats() ([]domains.FizzBuzz, uint)
+}
+
+// Vanilla is default implementation of Usecases interface
+type Vanilla struct {
+	fizzBuzz fizzBuzzModule.FizzBuzz
+	stats    statsModule.Stats
+	logger   *zap.Logger
+}
+
+// NewUsecases is constructor of Vanilla
+func NewUsecases(fizzBuzz fizzBuzzModule.FizzBuzz, stats statsModule.Stats, logger *zap.Logger) Usecases {
+	return &Vanilla{
+		fizzBuzz: fizzBuzz,
+		stats:    stats,
+		logger:   logger.Named("Usecases"),
+	}
 }

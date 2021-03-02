@@ -6,6 +6,7 @@ import (
 	"github.com/go-chi/render"
 )
 
-func (gw *Endpoint) Ping(w http.ResponseWriter, r *http.Request) {
-	render.PlainText(w, r, gw.uc.Ping())
+// Ping will be used for technical purpose
+func (gw *Endpoints) Ping(w http.ResponseWriter, r *http.Request) {
+	render.PlainText(w, r, "pong")
 }

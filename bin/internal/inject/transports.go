@@ -23,5 +23,5 @@ var Transports = fx.Options(
 	),
 
 	// Endpoints
-	fx.Provide(endpoints.NewEndpoint),
+	fx.Provide(endpoints.NewEndpoints),
 )

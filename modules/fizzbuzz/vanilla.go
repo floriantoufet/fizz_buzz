@@ -14,17 +14,20 @@ func NewFizzBuzz() FizzBuzz {
 	return &Vanilla{}
 }
 
-func (v Vanilla) FizzBuzz(request domains.FizzBuzz) (result string, err error) {
+// FizzBuzz implements FizzBuzz interface
+func (v Vanilla) FizzBuzz(request domains.FizzBuzz) (string, error) {
 	// Check if Limit is strictly positive
 	if request.Limit <= 0 {
 		return "", ErrInvalidLimit
 	}
 
 	// Negatives modulus are forbidden
-	if request.BuzzModulo < 0 || request.FizzModulo < 0 {
+	if request.BuzzModulo <= 0 || request.FizzModulo <= 0 {
 		return "", ErrInvalidModulo
 	}
 
+	// Build fizzBuzz string
+	var result string
 	for n := 1; n <= request.Limit; n++ {
 		current := ""
 
@@ -43,7 +46,5 @@ func (v Vanilla) FizzBuzz(request domains.FizzBuzz) (result string, err error) {
 		result += current + ","
 	}
 
-	result = strings.TrimRight(result, ",")
-
-	return
+	return strings.TrimRight(result, ","), nil
 }

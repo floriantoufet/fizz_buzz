@@ -15,6 +15,7 @@ func NewStats() Stats {
 	}
 }
 
+// RecordFizzBuzzRequest implements Stats interface
 func (stats *InMemory) RecordFizzBuzzRequest(parameters domains.FizzBuzz) {
 	stats.fizzBuzzRequests[parameters] ++
 	if stats.fizzBuzzRequests[parameters] > stats.maxCalled {
@@ -22,6 +23,7 @@ func (stats *InMemory) RecordFizzBuzzRequest(parameters domains.FizzBuzz) {
 	}
 }
 
+// RetrieveMostFrequentFizzBuzzRequest implements Stats interface
 func (stats InMemory) RetrieveMostFrequentFizzBuzzRequest() (requests []domains.FizzBuzz, count uint) {
 	count = stats.maxCalled
 
