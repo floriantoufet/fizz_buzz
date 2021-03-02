@@ -6,8 +6,8 @@ import (
 
 	"github.com/go-chi/chi"
 
-	"fiz_buz/transport"
-	"fiz_buz/transport/http/endpoints"
+	"fizzbuzz/transport"
+	"fizzbuzz/transport/http/endpoints"
 )
 
 type HTTP struct {

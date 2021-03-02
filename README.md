@@ -1,2 +1,3 @@
-# fiz_buz
+# fizzbuzz
+
 Fiz Buz Rest API

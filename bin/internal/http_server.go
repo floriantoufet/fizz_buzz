@@ -3,7 +3,7 @@ package internal
 import (
 	"go.uber.org/fx"
 
-	"fiz_buz/transport"
+	"fizzbuzz/transport"
 )
 
 // HTTPServerParams is the input parameter struct for the modules that contains its dependencies.

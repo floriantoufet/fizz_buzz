@@ -4,7 +4,7 @@ import (
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 
-	"fiz_buz/bin/internal"
+	"fizzbuzz/bin/internal"
 )
 
 var External = fx.Provide(

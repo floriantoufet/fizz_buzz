@@ -3,12 +3,13 @@ package main
 import (
 	"go.uber.org/fx"
 
-	"fiz_buz/bin/internal"
-	"fiz_buz/bin/internal/inject"
+	"fizzbuzz/bin/internal"
+	"fizzbuzz/bin/internal/inject"
 )
 
 func main() {
 	app := fx.New(
+		// TODO remove comment
 		// fx.NopLogger, // remove for debug
 		inject.External,
 		inject.Modules,

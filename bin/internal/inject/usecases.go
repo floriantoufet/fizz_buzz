@@ -3,7 +3,7 @@ package inject
 import (
 	"go.uber.org/fx"
 
-	"fiz_buz/usecases"
+	"fizzbuzz/usecases"
 )
 
 var UseCases = fx.Provide(

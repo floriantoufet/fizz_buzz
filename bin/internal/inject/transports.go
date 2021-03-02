@@ -3,8 +3,8 @@ package inject
 import (
 	"go.uber.org/fx"
 
-	"fiz_buz/transport/http"
-	"fiz_buz/transport/http/endpoints"
+	"fizzbuzz/transport/http"
+	"fizzbuzz/transport/http/endpoints"
 )
 
 var Transports = fx.Options(
