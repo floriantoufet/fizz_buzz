@@ -10,11 +10,8 @@ import (
 var External = fx.Provide(
 	// Zap logger
 	func() (*zap.Logger, error) {
-		logger, err := zap.NewProduction()
-		if err != nil {
-			return nil, err
-		}
-
+		logger := zap.NewExample()
+		
 		// Replace default Zap logger singleton with new instance
 		zap.ReplaceGlobals(logger)
 		return logger, nil

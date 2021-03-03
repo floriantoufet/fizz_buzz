@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-chi/render"
 
-	"fizzbuzz/usecases"
+	"fizzbuzz/domains"
 )
 
 // FizzBuzz returns a string with numbers from 1 to limit where:
@@ -44,11 +44,21 @@ func (gw *Endpoints) FizzBuzz(w http.ResponseWriter, r *http.Request) {
 	// Get fizzBuzz string
 	fizzBuzzResponse, err := gw.uc.FizzBuzz(fizzModulo, buzzModulo, limit, fizzString, buzzString)
 	if err != nil {
+		w.Header().Set("Content-Type", "application/json")
+		var requestErr domains.Errors
 		switch {
-		case errors.Is(err, usecases.ErrInvalidLimit), errors.Is(err, usecases.ErrInvalidModulo):
-			http.Error(w, err.Error(), http.StatusBadRequest)
+		case errors.As(err, &requestErr):
+			w.WriteHeader(http.StatusBadRequest)
+			render.JSON(w, r, map[string]interface{}{
+				"status":  http.StatusBadRequest,
+				"details": requestErr,
+			})
 		default:
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			w.WriteHeader(http.StatusInternalServerError)
+			render.JSON(w, r, map[string]interface{}{
+				"status":      http.StatusInternalServerError,
+				"description": http.StatusText(http.StatusInternalServerError),
+			})
 		}
 
 		return

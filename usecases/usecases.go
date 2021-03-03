@@ -17,14 +17,23 @@ var (
 	// ErrMissingLimit is thrown when limit is missing
 	ErrMissingLimit = errors.New("missing limit")
 
-	// ErrInvalidModulo is thrown when one of modulus is zero or negative
-	ErrInvalidModulo = errors.New("invalid modulo")
+	// ErrInvalidFizzModulo is thrown when fizz modulo is zero or negative
+	ErrInvalidFizzModulo = errors.New("invalid fizz modulo")
 
-	// ErrInvalidModulo is thrown when one of modulus is zero or negative
-	ErrMissingFizzModulo = errors.New("invalid modulo")
+	// ErrMissingFizzModulo is thrown when fizz modulo is zero or negative
+	ErrMissingFizzModulo = errors.New("missing fizz modulo")
 
-	// ErrMissingString is thrown when something unexpected happened
-	ErrMissingString = errors.New("unexpected error")
+	// ErrInvalidBuzzModulo is thrown when buzz modulo is zero or negative
+	ErrInvalidBuzzModulo = errors.New("invalid buzz modulo")
+
+	// ErrMissingBuzzModulo is thrown when buzz modulo is zero or negative
+	ErrMissingBuzzModulo = errors.New("missing buzz modulo")
+
+	// ErrMissingFizzString is thrown when fizz string is missing or empty
+	ErrMissingFizzString = errors.New("missing fizz string")
+
+	// ErrMissingBuzzString is thrown when buzz string is missing or empty
+	ErrMissingBuzzString = errors.New("missing buzz string")
 
 	// ErrUnexpected is thrown when something unexpected happened
 	ErrUnexpected = errors.New("unexpected error")
@@ -35,8 +44,7 @@ type Usecases interface {
 	// all multiples of request.FizzModulo are replaced by request.FizzString,
 	// all multiples of request.BuzzModulo are replaced by request.BuzzString,
 	// all multiples of request.FizzModulo and request.BuzzModulo are replaced by FizzStringBuzzString
-	// returns ErrInvalidLimit if limit is negative
-	// returns ErrInvalidModulo if one of modulus is zero or negative
+	// or error if one of given parameters are invalid
 	FizzBuzz(fizzModulo, buzzModulo, limit *int, fizzString, buzzString *string) (string, error)
 
 	// RetrieveStats returns the FizzBuzz corresponding to most used requests,
