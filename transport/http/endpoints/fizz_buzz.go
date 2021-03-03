@@ -7,7 +7,6 @@ import (
 
 	"github.com/go-chi/render"
 
-	"fizzbuzz/domains"
 	"fizzbuzz/usecases"
 )
 
@@ -20,32 +19,30 @@ import (
 // returns 500 if get an unexpected error
 func (gw *Endpoints) FizzBuzz(w http.ResponseWriter, r *http.Request) {
 	// Get request params
-	fizzModulo, err := strconv.Atoi(r.URL.Query().Get("fizz_modulo"))
-	if err != nil {
-		http.Error(w, "expect int for fizz_modulo", http.StatusBadRequest)
-		return
+	var (
+		fizzModulo, buzzModulo, limit *int
+		fizzString, buzzString        *string
+	)
+
+	if value, err := strconv.Atoi(r.URL.Query().Get("fizz_modulo")); err == nil {
+		fizzModulo = &value
 	}
-	buzzModulo, err := strconv.Atoi(r.URL.Query().Get("buzz_modulo"))
-	if err != nil {
-		http.Error(w, "expect int for buzz_modulo", http.StatusBadRequest)
-		return
+	if value, err := strconv.Atoi(r.URL.Query().Get("buzz_modulo")); err == nil {
+		buzzModulo = &value
 	}
-	limit, err := strconv.Atoi(r.URL.Query().Get("limit"))
-	if err != nil {
-		http.Error(w, "expect int for limit", http.StatusBadRequest)
-		return
+	if value, err := strconv.Atoi(r.URL.Query().Get("limit")); err == nil {
+		limit = &value
 	}
 
-	fizzBuzzRequest := domains.FizzBuzz{
-		FizzModulo: fizzModulo,
-		BuzzModulo: buzzModulo,
-		Limit:      limit,
-		FizzString: r.URL.Query().Get("fizz_string"),
-		BuzzString: r.URL.Query().Get("buzz_string"),
+	if value := r.URL.Query().Get("fizz_string"); value != "" {
+		fizzString = &value
+	}
+	if value := r.URL.Query().Get("buzz_string"); value != "" {
+		buzzString = &value
 	}
 
 	// Get fizzBuzz string
-	fizzBuzzResponse, err := gw.uc.FizzBuzz(fizzBuzzRequest)
+	fizzBuzzResponse, err := gw.uc.FizzBuzz(fizzModulo, buzzModulo, limit, fizzString, buzzString)
 	if err != nil {
 		switch {
 		case errors.Is(err, usecases.ErrInvalidLimit), errors.Is(err, usecases.ErrInvalidModulo):
