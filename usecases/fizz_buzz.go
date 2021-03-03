@@ -10,8 +10,19 @@ import (
 )
 
 // FizzBuzz implements Usecases interface
-func (uc Vanilla) FizzBuzz(request domains.FizzBuzz) (string, error) {
+func (uc Vanilla) FizzBuzz(fizzModulo, buzzModulo, limit *int, fizzString, buzzString *string) (string, error) {
 	logger := uc.logger.Named("FizzBuzz")
+
+	if fizzModulo == nil || buzzModulo == nil {
+		return "", ErrInvalidModulo
+	}
+	if limit == nil {
+		return "", ErrInvalidLimit
+	}
+	if fizzString == nil || buzzString == nil {
+		return "", ErrUnexpected
+	}
+	request := domains.FizzBuzz{}
 
 	// Get fizzBuzz string
 	result, err := uc.fizzBuzz.FizzBuzz(request)

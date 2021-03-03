@@ -14,8 +14,17 @@ var (
 	// ErrInvalidLimit is thrown when limit is negative
 	ErrInvalidLimit = errors.New("invalid limit")
 
+	// ErrMissingLimit is thrown when limit is missing
+	ErrMissingLimit = errors.New("missing limit")
+
 	// ErrInvalidModulo is thrown when one of modulus is zero or negative
 	ErrInvalidModulo = errors.New("invalid modulo")
+
+	// ErrInvalidModulo is thrown when one of modulus is zero or negative
+	ErrMissingFizzModulo = errors.New("invalid modulo")
+
+	// ErrMissingString is thrown when something unexpected happened
+	ErrMissingString = errors.New("unexpected error")
 
 	// ErrUnexpected is thrown when something unexpected happened
 	ErrUnexpected = errors.New("unexpected error")
@@ -28,7 +37,7 @@ type Usecases interface {
 	// all multiples of request.FizzModulo and request.BuzzModulo are replaced by FizzStringBuzzString
 	// returns ErrInvalidLimit if limit is negative
 	// returns ErrInvalidModulo if one of modulus is zero or negative
-	FizzBuzz(request domains.FizzBuzz) (string, error)
+	FizzBuzz(fizzModulo, buzzModulo, limit *int, fizzString, buzzString *string) (string, error)
 
 	// RetrieveStats returns the FizzBuzz corresponding to most used requests,
 	// as well as the number of hits for those requests
