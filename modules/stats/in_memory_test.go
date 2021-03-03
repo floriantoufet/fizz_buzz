@@ -9,13 +9,13 @@ import (
 	"fizzbuzz/modules/stats"
 )
 
-func TestUnit_InMemory(t *testing.T) {
+func Test_InMemory(t *testing.T) {
 	Convey("When I try to get most frequent fizz buzz should success", t, func() {
 		s := stats.NewStats()
 
 		request1 := domains.FizzBuzz{FizzModulo: 1, BuzzModulo: 4, Limit: 20, FizzString: "fizz", BuzzString: "buzz"}
 		request2 := domains.FizzBuzz{FizzModulo: 5, BuzzModulo: 2, Limit: 25, FizzString: "buzz", BuzzString: "leclair"}
-		request3 := domains.FizzBuzz{FizzModulo: 6, BuzzModulo: 2, Limit: 25, FizzString: "foo", BuzzString: "bar"}
+		request3 := domains.FizzBuzz{FizzModulo: 6, BuzzModulo: 2, Limit: 25, FizzString: "buzz", BuzzString: "aldrin"}
 
 		var expectedRequests []domains.FizzBuzz
 		var expectedCount uint

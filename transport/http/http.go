@@ -48,5 +48,7 @@ func (transport *HTTP) GetAddress() string {
 func (transport *HTTP) initRoutes(r chi.Router) {
 	r.Route("/v1", func(r chi.Router) {
 		r.Get("/ping", transport.endpoints.Ping)
+		r.Get("/fizz_buzz", transport.endpoints.FizzBuzz)
+		r.Get("/stats", transport.endpoints.RetrieveStats)
 	})
 }

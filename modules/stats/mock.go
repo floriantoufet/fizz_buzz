@@ -12,6 +12,10 @@ type Mock struct {
 	mock.Mock
 }
 
+func (m *Mock) GetMock() *mock.Mock {
+	return &m.Mock
+}
+
 func (m *Mock) RetrieveMostFrequentFizzBuzzRequest() ([]domains.FizzBuzz, uint) {
 	return m.Called().Get(0).([]domains.FizzBuzz), m.Called().Get(1).(uint)
 }

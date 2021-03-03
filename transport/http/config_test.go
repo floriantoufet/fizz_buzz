@@ -8,7 +8,7 @@ import (
 	"fizzbuzz/transport/http"
 )
 
-func TestUnit_Config_Check(t *testing.T) {
+func Test_Config_Check(t *testing.T) {
 	Convey("Given a configuration", t, func() {
 		config := http.Config{
 			Host: "localhost",

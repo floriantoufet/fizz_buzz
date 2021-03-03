@@ -12,6 +12,10 @@ type Mock struct {
 	mock.Mock
 }
 
+func (m *Mock) GetMock() *mock.Mock {
+	return &m.Mock
+}
+
 func (m *Mock) FizzBuzz(request domains.FizzBuzz) (string, error) {
 	args := m.Called(request)
 

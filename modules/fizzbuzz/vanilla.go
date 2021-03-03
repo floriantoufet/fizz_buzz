@@ -21,7 +21,7 @@ func (v Vanilla) FizzBuzz(request domains.FizzBuzz) (string, error) {
 		return "", ErrInvalidLimit
 	}
 
-	// Negatives modulus are forbidden
+	// Zero or negatives modulus are forbidden
 	if request.BuzzModulo <= 0 || request.FizzModulo <= 0 {
 		return "", ErrInvalidModulo
 	}
