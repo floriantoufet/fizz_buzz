@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	// ErrInvalidLimit is thrown when limit is negative
+	// ErrInvalidLimit is thrown when limit is negative or zero
 	ErrInvalidLimit = errors.New("invalid limit")
 
 	// ErrMissingLimit is thrown when limit is missing
@@ -20,13 +20,13 @@ var (
 	// ErrInvalidFizzModulo is thrown when fizz modulo is zero or negative
 	ErrInvalidFizzModulo = errors.New("invalid fizz modulo")
 
-	// ErrMissingFizzModulo is thrown when fizz modulo is zero or negative
+	// ErrMissingFizzModulo is thrown when fizz modulo is missing
 	ErrMissingFizzModulo = errors.New("missing fizz modulo")
 
 	// ErrInvalidBuzzModulo is thrown when buzz modulo is zero or negative
 	ErrInvalidBuzzModulo = errors.New("invalid buzz modulo")
 
-	// ErrMissingBuzzModulo is thrown when buzz modulo is zero or negative
+	// ErrMissingBuzzModulo is thrown when buzz modulo is missing
 	ErrMissingBuzzModulo = errors.New("missing buzz modulo")
 
 	// ErrMissingFizzString is thrown when fizz string is missing or empty
