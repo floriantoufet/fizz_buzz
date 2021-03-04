@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
+	gochiCors "github.com/go-chi/cors"
 
 	"fizzbuzz/transport"
 	"fizzbuzz/transport/http/endpoints"
@@ -46,6 +47,13 @@ func (transport *HTTP) GetAddress() string {
 }
 
 func (transport *HTTP) initRoutes(r chi.Router) {
+	// Init CORS
+	r.Use(gochiCors.New(gochiCors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{"GET"},
+		AllowedHeaders: []string{"Accept", "Content-Type"},
+	}).Handler)
+
 	r.Route("/v1", func(r chi.Router) {
 		r.Get("/ping", transport.endpoints.Ping)
 		r.Get("/fizz_buzz", transport.endpoints.FizzBuzz)

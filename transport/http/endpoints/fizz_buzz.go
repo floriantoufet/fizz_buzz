@@ -56,13 +56,13 @@ func (gw *Endpoints) FizzBuzz(w http.ResponseWriter, r *http.Request) {
 		default:
 			w.WriteHeader(http.StatusInternalServerError)
 			render.JSON(w, r, map[string]interface{}{
-				"status":      http.StatusInternalServerError,
-				"description": http.StatusText(http.StatusInternalServerError),
+				"status":  http.StatusInternalServerError,
+				"details": http.StatusText(http.StatusInternalServerError),
 			})
 		}
 
 		return
 	}
 
-	render.PlainText(w, r, fizzBuzzResponse)
+	render.JSON(w, r, map[string]string{"result": fizzBuzzResponse})
 }

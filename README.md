@@ -28,3 +28,7 @@ Windows:
  ```shell script
  C:\....\fizz_buzz_windows-amd64.exe
  ```
+
+### Call endpoints
+
+All endpoints are detailed in [swagger.yml](https://github.com/floriantoufet/fizz_buzz/blob/main/swagger.yml)

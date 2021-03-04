@@ -1,0 +1,98 @@
+swagger: '2.0'
+info:
+  title: FizzBuzz
+  description: Get fizz buzz and requests stats.
+  version: '1.0'
+host: localhost:8080
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /v1/fizz_buzz:
+    get:
+      summary: FizzBuzz endpoint
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/FizzBuzzResponse'
+        '400':
+          description: A bad request response.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: An unexpected response.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      parameters:
+        - name: fizz_modulo
+          in: query
+          required: true
+          type: integer
+          format: int64
+        - name: buzz_modulo
+          in: query
+          required: true
+          type: integer
+          format: int64
+        - name: limit
+          in: query
+          required: true
+          type: integer
+          format: int64
+        - name: fizz_string
+          in: query
+          required: true
+          type: string
+        - name: buzz_string
+          in: query
+          required: true
+          type: string
+  /v1/stats:
+    get:
+      summary: Requests statistics endpoint
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/StatsResponse'
+definitions:
+  FizzBuzzResponse:
+    type: object
+    properties:
+      result:
+        type: string
+  ErrorResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      details:
+        type: array
+  StatsResponse:
+    type: object
+    properties:
+      total:
+        type: integer
+        format: int64
+      requests:
+        $ref: '#/definitions/StatisticsResponse'
+  StatisticsResponse:
+    type: object
+    properties:
+      FizzModulo:
+        type: integer
+        format: int64
+      BuzzModulo:
+        type: integer
+        format: int64
+      Limit:
+        type: integer
+        format: int64
+      FizzString:
+        type: string
+      BuzzString:
+        type: string
