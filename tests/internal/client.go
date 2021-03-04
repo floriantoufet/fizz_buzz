@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"errors"
+	"net/http"
 
 	"github.com/cucumber/godog"
 )
@@ -16,13 +16,23 @@ type Client struct {
 
 func GetClient() *Client {
 	if client == nil {
-		client = &Client{}
+		client = &Client{
+			cli: &HttpClient{
+				client:        &http.Client{},
+				trace:         nil,
+				initialClient: nil,
+				request:       &http.Request{},
+				httpResponse:  nil,
+				Response:      nil,
+				tracing:       false,
+			},
+		}
 	}
 	return client
 }
 
 func ResetClient() error {
-	client = &Client{}
+	client = nil
 
 	return nil
 }
@@ -79,13 +89,4 @@ func (cli *Client) InitRequest() {
 		Method:    "GET",
 		Arguments: make(map[string]string),
 	}
-}
-
-// ResponseShouldBeEquivalent asserts response body is a HTML resembling provided.
-func ResponseShouldBeEquivalent(body *godog.DocString) error {
-	cli := GetClient()
-	if cli == nil {
-		return errors.New("empty client")
-	}
-	return cli.cli.Response.HTMLResemble(body)
 }

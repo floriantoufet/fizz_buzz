@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"bytes"
 	"net/http"
 
 	"github.com/google/go-cmp/cmp"
@@ -18,8 +19,10 @@ func (request RequestPreparation) Empty() bool {
 }
 
 // Generate request
-func (request RequestPreparation) GenerateRequest(jar http.CookieJar) (*http.Request, error) { //nolint:gocyclo
-	var req *http.Request
+func (request RequestPreparation) GenerateRequest() (*http.Request, error) { //nolint:gocyclo
+	var b bytes.Buffer
+
+	req, _ := http.NewRequest(request.Method, request.Endpoint, &b)
 
 	q := req.URL.Query()
 

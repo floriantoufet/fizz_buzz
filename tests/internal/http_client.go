@@ -26,7 +26,7 @@ func (cli *HttpClient) EmitRequest(req RequestPreparation) (err error) {
 		return ErrNoRequest
 	}
 
-	cli.request, err = req.GenerateRequest(cli.client.Jar)
+	cli.request, err = req.GenerateRequest()
 	if err != nil {
 		return err
 	}
