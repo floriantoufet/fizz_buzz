@@ -7,7 +7,7 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 func TestError(t *testing.T) {

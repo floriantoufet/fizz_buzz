@@ -1,11 +1,11 @@
-# Fizz Buzz ![](https://github.com/floriantoufet/fizz_buzz/workflows/Tests/badge.svg) ![](https://github.com/floriantoufet/fizz_buzz/workflows/Releases/badge.svg)
+# Fizz Buzz ![](https://github.com/floriantoufet/fizzbuzz/workflows/Tests/badge.svg) ![](https://github.com/floriantoufet/fizzbuzz/workflows/Releases/badge.svg)
 
 Returns a list of strings with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are
 replaced by str2, all multiples of int1 and int2 are replaced by str1str2. :
 
 ### Download binaries
 
-Go to [latest release](https://github.com/floriantoufet/fizz_buzz/releases/latest)
+Go to [latest release](https://github.com/floriantoufet/fizzbuzz/releases/latest)
 
 ### Run
 
@@ -31,4 +31,4 @@ Windows:
 
 ### Call endpoints
 
-All endpoints are detailed in [swagger.yml](https://github.com/floriantoufet/fizz_buzz/blob/main/swagger.yml)
+All endpoints are detailed in [swagger.yml](https://github.com/floriantoufet/fizzbuzz/blob/main/swagger.yml)

@@ -7,8 +7,8 @@ import (
 	"github.com/go-chi/chi"
 	gochiCors "github.com/go-chi/cors"
 
-	"fizzbuzz/transport"
-	"fizzbuzz/transport/http/endpoints"
+	"github.com/floriantoufet/fizzbuzz/transport"
+	"github.com/floriantoufet/fizzbuzz/transport/http/endpoints"
 )
 
 type HTTP struct {

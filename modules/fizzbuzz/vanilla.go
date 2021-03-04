@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 type Vanilla struct {

@@ -6,7 +6,7 @@ import (
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 
-	"fizzbuzz/transport"
+	"github.com/floriantoufet/fizzbuzz/transport"
 )
 
 type FXServer struct {

@@ -1,4 +1,4 @@
-module fizzbuzz
+module github.com/floriantoufet/fizzbuzz
 
 go 1.15
 

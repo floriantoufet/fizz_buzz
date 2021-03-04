@@ -1,7 +1,7 @@
 package stats
 
 import (
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 type Stats interface {

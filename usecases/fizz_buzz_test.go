@@ -7,8 +7,8 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 	"github.com/stretchr/testify/mock"
 
-	"fizzbuzz/domains"
-	"fizzbuzz/usecases"
+	"github.com/floriantoufet/fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/usecases"
 )
 
 func TestVanilla_FizzBuzz(t *testing.T) {

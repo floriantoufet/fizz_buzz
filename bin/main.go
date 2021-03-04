@@ -3,8 +3,8 @@ package main
 import (
 	"go.uber.org/fx"
 
-	"fizzbuzz/bin/internal"
-	"fizzbuzz/bin/internal/inject"
+	"github.com/floriantoufet/fizzbuzz/bin/internal"
+	"github.com/floriantoufet/fizzbuzz/bin/internal/inject"
 )
 
 func main() {

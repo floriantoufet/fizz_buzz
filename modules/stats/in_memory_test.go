@@ -5,8 +5,8 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"fizzbuzz/domains"
-	"fizzbuzz/modules/stats"
+	"github.com/floriantoufet/fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/modules/stats"
 )
 
 func Test_InMemory(t *testing.T) {

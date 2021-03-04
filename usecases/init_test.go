@@ -4,9 +4,9 @@ import (
 	"github.com/stretchr/testify/mock"
 	"go.uber.org/zap"
 
-	"fizzbuzz/modules/fizzbuzz"
-	"fizzbuzz/modules/stats"
-	"fizzbuzz/usecases"
+	"github.com/floriantoufet/fizzbuzz/modules/fizzbuzz"
+	"github.com/floriantoufet/fizzbuzz/modules/stats"
+	"github.com/floriantoufet/fizzbuzz/usecases"
 )
 
 var (

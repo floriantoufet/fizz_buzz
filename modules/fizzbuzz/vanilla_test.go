@@ -5,8 +5,8 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"fizzbuzz/domains"
-	"fizzbuzz/modules/fizzbuzz"
+	"github.com/floriantoufet/fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/modules/fizzbuzz"
 )
 
 func TestVanilla_FizzBuzz(t *testing.T) {

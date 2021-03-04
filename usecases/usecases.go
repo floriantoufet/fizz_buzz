@@ -5,9 +5,9 @@ import (
 
 	"go.uber.org/zap"
 
-	"fizzbuzz/domains"
-	fizzBuzzModule "fizzbuzz/modules/fizzbuzz"
-	statsModule "fizzbuzz/modules/stats"
+	"github.com/floriantoufet/fizzbuzz/domains"
+	fizzBuzzModule "github.com/floriantoufet/fizzbuzz/modules/fizzbuzz"
+	statsModule "github.com/floriantoufet/fizzbuzz/modules/stats"
 )
 
 const MaxLimitAllowed = 1000

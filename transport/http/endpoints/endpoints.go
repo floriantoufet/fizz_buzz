@@ -1,7 +1,7 @@
 package endpoints
 
 import (
-	"fizzbuzz/usecases"
+	"github.com/floriantoufet/fizzbuzz/usecases"
 )
 
 type Endpoints struct {

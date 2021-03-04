@@ -3,8 +3,8 @@ package inject
 import (
 	"go.uber.org/fx"
 
-	"fizzbuzz/modules/fizzbuzz"
-	"fizzbuzz/modules/stats"
+	"github.com/floriantoufet/fizzbuzz/modules/fizzbuzz"
+	"github.com/floriantoufet/fizzbuzz/modules/stats"
 )
 
 var Modules = fx.Provide(

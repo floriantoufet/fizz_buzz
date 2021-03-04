@@ -5,7 +5,7 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"fizzbuzz/transport/http"
+	"github.com/floriantoufet/fizzbuzz/transport/http"
 )
 
 func Test_Config_Check(t *testing.T) {

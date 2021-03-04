@@ -3,7 +3,7 @@ package usecases
 import (
 	"go.uber.org/zap"
 
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 // FizzBuzz implements Usecases interface

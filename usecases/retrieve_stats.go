@@ -1,7 +1,7 @@
 package usecases
 
 import (
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 // RetrieveStats implements Usecases interface

@@ -3,7 +3,7 @@ package stats
 import (
 	"github.com/stretchr/testify/mock"
 
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 var _ Stats = &Mock{}

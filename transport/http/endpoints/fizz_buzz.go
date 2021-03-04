@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-chi/render"
 
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 // FizzBuzz returns a string with numbers from 1 to limit where:

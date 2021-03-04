@@ -3,7 +3,7 @@ package fizzbuzz
 import (
 	"errors"
 
-	"fizzbuzz/domains"
+	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
 var (
