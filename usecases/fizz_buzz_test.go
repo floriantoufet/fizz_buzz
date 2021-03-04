@@ -2,6 +2,7 @@ package usecases_test
 
 import (
 	"errors"
+	"math/rand"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -91,6 +92,24 @@ func TestVanilla_FizzBuzz(t *testing.T) {
 				expectedErr = errs
 			})
 
+			Convey("if limit fizzString or buzzString is too long", func() {
+				errs := domains.Errors{}
+				errs.Add(usecases.ErrTooLongFizzString)
+				errs.Add(usecases.ErrTooLongBuzzString)
+
+				// Generate random string
+				b := make([]rune, 101)
+				for i := range b {
+					b[i] = letterRunes[rand.Intn(len(letterRunes))]
+				}
+
+				tooLong := string(b)
+				fizzModulo, buzzModulo, limit = &request.FizzModulo, &request.BuzzModulo, &request.Limit
+				fizzString, buzzString = &tooLong, &tooLong
+
+				expectedErr = errs
+			})
+
 			Convey("if get an un unexpected error from module", func() {
 				fizzBuzzMock.On("FizzBuzz", request).Return("", errors.New("ooops"))
 
@@ -114,4 +133,14 @@ func TestVanilla_FizzBuzz(t *testing.T) {
 
 		resetMocks(mocks...)
 	})
+}
+
+var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func RandStringRunes(n int) string {
+	b := make([]rune, 101)
+	for i := range b {
+		b[i] = letterRunes[rand.Intn(len(letterRunes))]
+	}
+	return string(b)
 }

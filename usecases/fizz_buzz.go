@@ -1,6 +1,8 @@
 package usecases
 
 import (
+	"unicode/utf8"
+
 	"go.uber.org/zap"
 
 	"github.com/floriantoufet/fizzbuzz/domains"
@@ -59,10 +61,14 @@ func (Vanilla) getRequest(fizzModulo, buzzModulo, limit *int, fizzString, buzzSt
 
 	if fizzString == nil {
 		errs.Add(ErrMissingFizzString)
+	} else if utf8.RuneCountInString(*fizzString) > MaxStringLengthAllowed {
+		errs.Add(ErrTooLongFizzString)
 	}
 
 	if buzzString == nil {
 		errs.Add(ErrMissingBuzzString)
+	} else if utf8.RuneCountInString(*buzzString) > MaxStringLengthAllowed {
+		errs.Add(ErrTooLongBuzzString)
 	}
 
 	if !errs.IsEmpty() {

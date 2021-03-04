@@ -10,7 +10,10 @@ import (
 	statsModule "github.com/floriantoufet/fizzbuzz/modules/stats"
 )
 
-const MaxLimitAllowed = 1000
+const (
+	MaxLimitAllowed        = 1000
+	MaxStringLengthAllowed = 100
+)
 
 var (
 	// ErrInvalidLimit is thrown when limit is negative or zero
@@ -39,6 +42,14 @@ var (
 
 	// ErrMissingBuzzString is thrown when buzz string is missing or empty
 	ErrMissingBuzzString = errors.New("missing buzz string")
+
+	// ErrTooLongBuzzString is thrown when buzz string length is greater than
+	// max string length allowed
+	ErrTooLongBuzzString = errors.New("too long buzz string")
+
+	// ErrTooLongFizzString is thrown when fizz string length is greater than
+	// max string length allowed
+	ErrTooLongFizzString = errors.New("too long fizz string")
 
 	// ErrUnexpected is thrown when something unexpected happened
 	ErrUnexpected = errors.New("unexpected error")

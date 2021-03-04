@@ -38,3 +38,9 @@ All endpoints are detailed in [swagger.yml](https://github.com/floriantoufet/fiz
 #### Godoc
 
 Available [here](https://pkg.go.dev/github.com/floriantoufet/fizzbuzz)
+
+#### Conditions
+
+- fizz string and buzz string do not exceed 100 characters
+- modulus and limit are strictly positives
+- limit does not exceed 1000
