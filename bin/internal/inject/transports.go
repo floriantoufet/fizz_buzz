@@ -3,6 +3,7 @@ package inject
 import (
 	"go.uber.org/fx"
 
+	"github.com/floriantoufet/fizzbuzz/modules/config"
 	"github.com/floriantoufet/fizzbuzz/transport/http"
 	"github.com/floriantoufet/fizzbuzz/transport/http/endpoints"
 )
@@ -14,10 +15,10 @@ var Transports = fx.Options(
 		fx.Annotated{Name: "http", Target: http.NewHTTP},
 
 		// HTTP Config
-		func() *http.Config {
+		func(conf *config.Config) *http.Config {
 			return &http.Config{
-				Host: "localhost",
-				Port: 8080,
+				Host: conf.Transports.HTTP.Host,
+				Port: conf.Transports.HTTP.Port,
 			}
 		},
 	),
