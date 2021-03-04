@@ -59,12 +59,12 @@ func SetQueryParams(args *godog.Table) error {
 	return nil
 }
 
-func (cli *Client) SetEndpoint(endpoint string) {
+func (cli *Client) SetEndpoint(method, endpoint string) {
 	if cli.request.Empty() {
 		cli.InitRequest()
 	}
 
-	cli.request = cli.request.SetEndpoint(endpoint)
+	cli.request = cli.request.SetEndpoint(method, endpoint)
 }
 
 // AddQueryParams adds query parameters.

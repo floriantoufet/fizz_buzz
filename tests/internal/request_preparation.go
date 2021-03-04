@@ -35,8 +35,9 @@ func (request RequestPreparation) GenerateRequest() (*http.Request, error) { //n
 	return req, nil
 }
 
-func (request RequestPreparation) SetEndpoint(endpoint string) RequestPreparation {
+func (request RequestPreparation) SetEndpoint(method, endpoint string) RequestPreparation {
 	request.Endpoint = endpoint
+	request.Method = method
 	return request
 }
 

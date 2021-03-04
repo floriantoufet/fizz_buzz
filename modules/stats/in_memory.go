@@ -35,3 +35,10 @@ func (stats InMemory) RetrieveMostFrequentFizzBuzzRequest() (requests []domains.
 
 	return
 }
+
+// ResetStats implements Stats interface
+func (stats *InMemory) ResetStats() {
+	*stats = InMemory{
+		fizzBuzzRequests: map[domains.FizzBuzz]uint{},
+	}
+}

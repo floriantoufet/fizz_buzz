@@ -2,6 +2,13 @@ Feature: As a human, I want to get FizzBuzz
 
   Scenario: FizzBuzz should success with valid parameters
     Given I reset client
+
+    # --------------------------------------------------------------------------------
+    # Reset record requests
+    # --------------------------------------------------------------------------------
+    And I DELETE http://localhost:8080/v1/stats/reset
+    Then response status code should be 200
+
     When I set request query
       | fizz_modulo | 3   |
       | buzz_modulo | 5   |

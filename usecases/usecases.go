@@ -66,6 +66,9 @@ type Usecases interface {
 	// RetrieveStats returns the FizzBuzz corresponding to most used requests,
 	// as well as the number of hits for those requests
 	RetrieveStats() ([]domains.FizzBuzz, uint)
+
+	// ResetStats resets requests stats
+	ResetStats()
 }
 
 // Vanilla is default implementation of Usecases interface

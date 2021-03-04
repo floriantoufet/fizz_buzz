@@ -23,3 +23,7 @@ func (m *Mock) RetrieveMostFrequentFizzBuzzRequest() ([]domains.FizzBuzz, uint) 
 func (m *Mock) RecordFizzBuzzRequest(parameters domains.FizzBuzz) {
 	_ = m.Called(parameters)
 }
+
+func (m *Mock) ResetStats() {
+	return
+}

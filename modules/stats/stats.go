@@ -11,4 +11,7 @@ type Stats interface {
 
 	// RecordFizzBuzzRequest records given request to called request
 	RecordFizzBuzzRequest(request domains.FizzBuzz)
+
+	// ResetStats resets requests stats
+	ResetStats()
 }

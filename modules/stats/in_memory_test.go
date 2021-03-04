@@ -47,6 +47,21 @@ func Test_InMemory(t *testing.T) {
 			expectedCount = 3
 		})
 
+		Convey("with multiple most called requests and reset", func() {
+			s.RecordFizzBuzzRequest(request1)
+			s.RecordFizzBuzzRequest(request1)
+			s.RecordFizzBuzzRequest(request1)
+			s.RecordFizzBuzzRequest(request3)
+			s.RecordFizzBuzzRequest(request3)
+			s.RecordFizzBuzzRequest(request3)
+			s.RecordFizzBuzzRequest(request2)
+			s.RecordFizzBuzzRequest(request2)
+			s.ResetStats()
+
+			expectedRequests = []domains.FizzBuzz{}
+			expectedCount = 0
+		})
+
 		requests, count := s.RetrieveMostFrequentFizzBuzzRequest()
 
 		So(len(requests), ShouldEqual, len(expectedRequests))

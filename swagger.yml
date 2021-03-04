@@ -59,6 +59,12 @@ paths:
           description: A successful response.
           schema:
             $ref: '#/definitions/StatsResponse'
+  /v1/stats/reset:
+    delete:
+      summary: Reset requests statistics endpoint
+      responses:
+        '200':
+          description: A successful response.
 definitions:
   FizzBuzzResponse:
     type: object

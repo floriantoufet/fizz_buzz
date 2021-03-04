@@ -4,6 +4,12 @@ Feature: As a human, I want to retrieve FizzBuzz stats
     Given I reset client
 
     # --------------------------------------------------------------------------------
+    # Reset record requests
+    # --------------------------------------------------------------------------------
+    And I DELETE http://localhost:8080/v1/stats/reset
+    Then response status code should be 200
+
+    # --------------------------------------------------------------------------------
     # Record requests
     # --------------------------------------------------------------------------------
     When I set request query
@@ -36,9 +42,6 @@ Feature: As a human, I want to retrieve FizzBuzz stats
       | buzz_string | aldrin |
     And I GET http://localhost:8080/v1/fizz_buzz
     Then response status code should be 200
-    And I GET http://localhost:8080/v1/fizz_buzz
-    Then response status code should be 200
-
 
     # --------------------------------------------------------------------------------
     # Retrieve stats
@@ -48,13 +51,22 @@ Feature: As a human, I want to retrieve FizzBuzz stats
     Then json response should resemble
     """
     {
-      "details": [
-          "missing fizz modulo",
-          "missing buzz modulo",
-          "missing limit",
-          "missing fizz string",
-          "missing buzz string"
+      "requests": [
+          {
+              "FizzModulo": 3,
+              "BuzzModulo": 5,
+              "Limit": 15,
+              "FizzString": "foo",
+              "BuzzString": "bar"
+          },
+          {
+              "FizzModulo": 3,
+              "BuzzModulo": 10,
+              "Limit": 20,
+              "FizzString": "buzz",
+              "BuzzString": "leclair"
+          }
       ],
-      "status": 400
+      "total": 2
     }
     """
