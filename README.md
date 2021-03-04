@@ -1,4 +1,4 @@
-# Fizz Buzz ![](https://github.com/floriantoufet/fizzbuzz/workflows/Tests/badge.svg) ![](https://github.com/floriantoufet/fizzbuzz/workflows/Releases/badge.svg)
+# Fizz Buzz ![](https://github.com/floriantoufet/fizzbuzz/workflows/Tests/badge.svg) ![](https://github.com/floriantoufet/fizzbuzz/workflows/Releases/badge.svg) [![Go Reference](https://pkg.go.dev/badge/github.com/floriantoufet/fizzbuzz.svg)](https://pkg.go.dev/github.com/floriantoufet/fizzbuzz)
 
 Returns a list of strings with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are
 replaced by str2, all multiples of int1 and int2 are replaced by str1str2. :
@@ -31,4 +31,10 @@ Windows:
 
 ### Call endpoints
 
+#### Swaggers
+
 All endpoints are detailed in [swagger.yml](https://github.com/floriantoufet/fizzbuzz/blob/main/swagger.yml)
+
+#### Godoc
+
+Available [here](https://pkg.go.dev/github.com/floriantoufet/fizzbuzz)
