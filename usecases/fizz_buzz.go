@@ -53,6 +53,8 @@ func (Vanilla) getRequest(fizzModulo, buzzModulo, limit *int, fizzString, buzzSt
 		errs.Add(ErrMissingLimit)
 	} else if *limit <= 0 {
 		errs.Add(ErrInvalidLimit)
+	} else if *limit > MaxLimitAllowed {
+		errs.Add(ErrMaxAllowedLimitExceed)
 	}
 
 	if fizzString == nil {

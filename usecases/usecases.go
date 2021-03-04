@@ -10,9 +10,14 @@ import (
 	statsModule "fizzbuzz/modules/stats"
 )
 
+const MaxLimitAllowed = 1000
+
 var (
 	// ErrInvalidLimit is thrown when limit is negative or zero
 	ErrInvalidLimit = errors.New("invalid limit")
+
+	// ErrMaxAllowedLimitExceed is thrown when limit is higher than max allowed
+	ErrMaxAllowedLimitExceed = errors.New("max allowed limit exceed")
 
 	// ErrMissingLimit is thrown when limit is missing
 	ErrMissingLimit = errors.New("missing limit")

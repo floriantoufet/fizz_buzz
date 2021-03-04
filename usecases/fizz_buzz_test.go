@@ -80,6 +80,17 @@ func TestVanilla_FizzBuzz(t *testing.T) {
 				expectedErr = errs
 			})
 
+			Convey("if limit exceed max allowed", func() {
+				errs := domains.Errors{}
+				errs.Add(usecases.ErrMaxAllowedLimitExceed)
+
+				nb := 1001
+				fizzModulo, buzzModulo, limit = &request.FizzModulo, &request.BuzzModulo, &nb
+				fizzString, buzzString = &request.FizzString, &request.BuzzString
+
+				expectedErr = errs
+			})
+
 			Convey("if get an un unexpected error from module", func() {
 				fizzBuzzMock.On("FizzBuzz", request).Return("", errors.New("ooops"))
 
