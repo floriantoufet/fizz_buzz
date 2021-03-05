@@ -27,9 +27,11 @@ func (gw *Endpoints) FizzBuzz(w http.ResponseWriter, r *http.Request) {
 	if value, err := strconv.Atoi(r.URL.Query().Get("fizz_modulo")); err == nil {
 		fizzModulo = &value
 	}
+
 	if value, err := strconv.Atoi(r.URL.Query().Get("buzz_modulo")); err == nil {
 		buzzModulo = &value
 	}
+
 	if value, err := strconv.Atoi(r.URL.Query().Get("limit")); err == nil {
 		limit = &value
 	}
@@ -37,6 +39,7 @@ func (gw *Endpoints) FizzBuzz(w http.ResponseWriter, r *http.Request) {
 	if value := r.URL.Query().Get("fizz_string"); value != "" {
 		fizzString = &value
 	}
+
 	if value := r.URL.Query().Get("buzz_string"); value != "" {
 		buzzString = &value
 	}
@@ -46,6 +49,7 @@ func (gw *Endpoints) FizzBuzz(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.Header().Set("Content-Type", "application/json")
 		var requestErr domains.Errors
+		
 		switch {
 		case errors.As(err, &requestErr):
 			w.WriteHeader(http.StatusBadRequest)

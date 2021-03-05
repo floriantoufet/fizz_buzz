@@ -39,26 +39,32 @@ func (uc Vanilla) FizzBuzz(fizzModulo, buzzModulo, limit *int, fizzString, buzzS
 func (Vanilla) getRequest(fizzModulo, buzzModulo, limit *int, fizzString, buzzString *string) (domains.FizzBuzz, domains.Errors) {
 	errs := domains.Errors{}
 
+	// Check modulus
 	if fizzModulo == nil {
 		errs.Add(ErrMissingFizzModulo)
 	} else if *fizzModulo <= 0 {
 		errs.Add(ErrInvalidFizzModulo)
 	}
-
+	
 	if buzzModulo == nil {
 		errs.Add(ErrMissingBuzzModulo)
 	} else if *buzzModulo <= 0 {
 		errs.Add(ErrInvalidBuzzModulo)
 	}
 
-	if limit == nil {
+	// Check limit
+	switch {
+	case limit == nil:
 		errs.Add(ErrMissingLimit)
-	} else if *limit <= 0 {
+		break
+	case *limit <= 0:
 		errs.Add(ErrInvalidLimit)
-	} else if *limit > MaxLimitAllowed {
+		break
+	case *limit > MaxLimitAllowed:
 		errs.Add(ErrMaxAllowedLimitExceed)
 	}
 
+	// Check string
 	if fizzString == nil {
 		errs.Add(ErrMissingFizzString)
 	} else if utf8.RuneCountInString(*fizzString) > MaxStringLengthAllowed {

@@ -7,8 +7,7 @@ import (
 	"github.com/floriantoufet/fizzbuzz/domains"
 )
 
-type Vanilla struct {
-}
+type Vanilla struct{}
 
 func NewFizzBuzz() FizzBuzz {
 	return &Vanilla{}
@@ -28,6 +27,7 @@ func (v Vanilla) FizzBuzz(request domains.FizzBuzz) (string, error) {
 
 	// Build fizzBuzz string
 	var result string
+
 	for n := 1; n <= request.Limit; n++ {
 		current := ""
 

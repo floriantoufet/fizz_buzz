@@ -14,7 +14,6 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 			client := internal.GetClient()
 			client.SetEndpoint("GET", "http://localhost:8080/v1/fizz_buzz")
 
-			// InitRequest mandatory cause we wish to ensure the call is on the correct value
 			return client.ExecuteRequest()
 		},
 	)
@@ -24,7 +23,6 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 			client := internal.GetClient()
 			client.SetEndpoint("GET", "http://localhost:8080/v1/stats")
 
-			// InitRequest mandatory cause we wish to ensure the call is on the correct value
 			return client.ExecuteRequest()
 		},
 	)
@@ -35,7 +33,6 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 		client := internal.GetClient()
 		client.SetEndpoint("DELETE", "http://localhost:8080/v1/stats")
 
-		// InitRequest mandatory cause we wish to ensure the call is on the correct value
 		return client.ExecuteRequest()
 	})
 }

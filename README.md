@@ -29,11 +29,34 @@ Windows:
  C:\....\fizz_buzz_windows-amd64.exe
  ```
 
+#### Config
+
+Create `env.yml` in `conf` directory
+
+```yaml
+transports:
+  http:
+    host: 127.0.0.1
+    port: 8080
+
+logger:
+  env: "dev" # Supports dev or prod value
+
+```
+
+#### Launch with environment variable
+
+ ```shell script
+ $ CONF_ENV=env ./fizz_buzz_darwin-amd64
+ ```
+
+`CONF_ENV` take value of wanted conf file
+
 ### Call endpoints
 
 #### Swaggers
 
-All endpoints are detailed in [swagger.yml](https://github.com/floriantoufet/fizzbuzz/blob/main/swagger.yml)
+All endpoints are detailed in [swagger.yml](https://app.swaggerhub.com/apis/floriantoufet/FizzBuzz/1.0.0#/StatisticResponse)
 
 #### Godoc
 
@@ -44,3 +67,18 @@ Available [here](https://pkg.go.dev/github.com/floriantoufet/fizzbuzz)
 - fizz string and buzz string do not exceed 100 characters
 - modulus and limit are strictly positives
 - limit does not exceed 1000
+
+### Tests
+
+#### Requirements
+
+- install [golangci](https://github.com/golangci/golangci-lint)
+- install [godog](https://github.com/cucumber/godog)
+
+#### Run tests
+
+ ```shell script
+ $ ./run_test.sh
+ ```
+
+

@@ -29,5 +29,6 @@ func (errs Errors) Contains(target error) bool {
 			return true
 		}
 	}
+	
 	return false
 }

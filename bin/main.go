@@ -9,13 +9,11 @@ import (
 
 func main() {
 	app := fx.New(
-		// TODO remove comment
-		// fx.NopLogger, // remove for debug
+		fx.NopLogger, // remove for debug
 		inject.External,
 		inject.Modules,
 		inject.Transports,
 		inject.UseCases,
-		// fx.Invoke(validation.ValidateConfig),
 		fx.Invoke(internal.Dependencies),
 		fx.Invoke(internal.HTTPServer),
 	)

@@ -12,7 +12,6 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v1
       #      - name: Run lint
-      #          run: go test ./...
+      #        run: golangci-lint run
       - name: Run unit tests
         run: go test ./...
-

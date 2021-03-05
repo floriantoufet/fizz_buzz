@@ -58,8 +58,7 @@ paths:
         '200':
           description: A successful response.
           schema:
-            $ref: '#/definitions/StatsResponse'
-  /v1/stats:
+            $ref: '#/definitions/StatisticsResponse'
     delete:
       summary: Reset requests statistics endpoint
       responses:
@@ -78,15 +77,19 @@ definitions:
         type: integer
       details:
         type: array
-  StatsResponse:
+        items:
+          type: string
+  StatisticsResponse:
     type: object
     properties:
       total:
         type: integer
         format: int64
       requests:
-        $ref: '#/definitions/StatisticsResponse'
-  StatisticsResponse:
+        type: array
+        items:
+          $ref: '#/definitions/StatisticResponse'
+  StatisticResponse:
     type: object
     properties:
       FizzModulo:

@@ -2,6 +2,7 @@ package internal
 
 import (
 	"bytes"
+	"context"
 	"net/http"
 
 	"github.com/google/go-cmp/cmp"
@@ -22,7 +23,7 @@ func (request RequestPreparation) Empty() bool {
 func (request RequestPreparation) GenerateRequest() (*http.Request, error) { //nolint:gocyclo
 	var b bytes.Buffer
 
-	req, _ := http.NewRequest(request.Method, request.Endpoint, &b)
+	req, _ := http.NewRequestWithContext(context.Background(), request.Method, request.Endpoint, &b) //nolint:errcheck
 
 	q := req.URL.Query()
 
@@ -38,6 +39,7 @@ func (request RequestPreparation) GenerateRequest() (*http.Request, error) { //n
 func (request RequestPreparation) SetEndpoint(method, endpoint string) RequestPreparation {
 	request.Endpoint = endpoint
 	request.Method = method
+
 	return request
 }
 

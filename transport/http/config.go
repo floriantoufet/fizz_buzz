@@ -5,11 +5,8 @@
 package http
 
 import (
-	"errors"
 	"fmt"
 )
-
-var ErrInvalidPort = errors.New("invalid HTTP port")
 
 type Config struct {
 	Host string `yaml:"host"`
@@ -18,12 +15,4 @@ type Config struct {
 
 func (config Config) GetAddress() string {
 	return fmt.Sprintf("%s:%d", config.Host, config.Port)
-}
-
-func (config Config) Check() error {
-	if config.Port < 1024 || config.Port > 65535 {
-		return ErrInvalidPort
-	}
-
-	return nil
 }

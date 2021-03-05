@@ -25,5 +25,5 @@ func (m *Mock) RecordFizzBuzzRequest(parameters domains.FizzBuzz) {
 }
 
 func (m *Mock) ResetStats() {
-	return
+	m.Called()
 }

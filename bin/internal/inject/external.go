@@ -26,7 +26,7 @@ var External = fx.Provide(
 
 		// Replace default Zap logger singleton with new instance
 		zap.ReplaceGlobals(logger)
-		return logger, nil
+		return logger, err
 	},
 
 	// FX Server

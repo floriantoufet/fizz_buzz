@@ -9,7 +9,7 @@ import (
 
 var ErrNoRequest = errors.New("trying to emit empty request")
 
-type HttpClient struct {
+type HTTPClient struct {
 	client        *http.Client
 	trace         *httptrace.ClientTrace
 	initialClient *http.Client
@@ -21,7 +21,7 @@ type HttpClient struct {
 	tracing      bool
 }
 
-func (cli *HttpClient) EmitRequest(req RequestPreparation) (err error) {
+func (cli *HTTPClient) EmitRequest(req RequestPreparation) (err error) {
 	if req.Empty() {
 		return ErrNoRequest
 	}

@@ -13,6 +13,7 @@ func TestVanilla_ResetStats(t *testing.T) {
 		statsMock.On("ResetStats")
 
 		uc.ResetStats()
+		
 		So(statsMock.AssertCalled(t, "ResetStats"), ShouldBeTrue)
 
 		resetMock(statsMock.GetMock())

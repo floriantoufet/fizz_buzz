@@ -9,7 +9,7 @@ import (
 var client *Client
 
 type Client struct {
-	cli *HttpClient
+	cli *HTTPClient
 
 	request RequestPreparation
 }
@@ -17,7 +17,7 @@ type Client struct {
 func GetClient() *Client {
 	if client == nil {
 		client = &Client{
-			cli: &HttpClient{
+			cli: &HTTPClient{
 				client:        &http.Client{},
 				trace:         nil,
 				initialClient: nil,
@@ -28,6 +28,7 @@ func GetClient() *Client {
 			},
 		}
 	}
+
 	return client
 }
 
@@ -86,7 +87,6 @@ func (cli *Client) AddQueryParam(key, val string) {
 // InitRequest starts a new request with default parameter.
 func (cli *Client) InitRequest() {
 	cli.request = RequestPreparation{
-		Method:    "GET",
 		Arguments: make(map[string]string),
 	}
 }
