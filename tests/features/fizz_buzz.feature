@@ -1,12 +1,12 @@
-Feature: As a human, I want to get FizzBuzz
+Feature: I want to get FizzBuzz
 
   Scenario: FizzBuzz should success with valid parameters
-    Given I reset client
+    Given I reset HTTP client
 
     # --------------------------------------------------------------------------------
     # Reset record requests
     # --------------------------------------------------------------------------------
-    And I DELETE http://localhost:8080/v1/stats/reset
+    And I reset fizzBuzz request stats
     Then response status code should be 200
 
     When I set request query
@@ -15,7 +15,7 @@ Feature: As a human, I want to get FizzBuzz
       | limit       | 15  |
       | fizz_string | foo |
       | buzz_string | bar |
-    And I GET http://localhost:8080/v1/fizz_buzz
+    And I get fizzBuzz
     Then response status code should be 200
     And json response should resemble
     """
@@ -28,8 +28,8 @@ Feature: As a human, I want to get FizzBuzz
     # --------------------------------------------------------------------------------
     # With missing parameters
     # --------------------------------------------------------------------------------
-    Given I reset client
-    When I GET http://localhost:8080/v1/fizz_buzz
+    Given I reset HTTP client
+    When I get fizzBuzz
     Then response status code should be 400
     Then json response should resemble
     """
@@ -48,14 +48,14 @@ Feature: As a human, I want to get FizzBuzz
     # --------------------------------------------------------------------------------
     # With invalid parameters
     # --------------------------------------------------------------------------------
-    Given I reset client
+    Given I reset HTTP client
     When I set request query
       | fizz_modulo | foo  |
       | buzz_modulo | -15  |
       | limit       | 1001 |
       | fizz_string | foo  |
       | buzz_string | bar  |
-    And I GET http://localhost:8080/v1/fizz_buzz
+    And I get fizzBuzz
     Then json response should resemble
     """
     {

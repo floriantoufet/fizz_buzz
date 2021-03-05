@@ -59,7 +59,7 @@ paths:
           description: A successful response.
           schema:
             $ref: '#/definitions/StatsResponse'
-  /v1/stats/reset:
+  /v1/stats:
     delete:
       summary: Reset requests statistics endpoint
       responses:

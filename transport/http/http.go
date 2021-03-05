@@ -58,6 +58,6 @@ func (transport *HTTP) initRoutes(r chi.Router) {
 		r.Get("/ping", transport.endpoints.Ping)
 		r.Get("/fizz_buzz", transport.endpoints.FizzBuzz)
 		r.Get("/stats", transport.endpoints.RetrieveStats)
-		r.Delete("/stats/reset", transport.endpoints.ResetStats)
+		r.Delete("/stats", transport.endpoints.ResetStats)
 	})
 }
